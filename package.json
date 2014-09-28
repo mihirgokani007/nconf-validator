@@ -1,0 +1,38 @@
+{
+  "name": "nconf-validator",
+  "description": "Add validation support for nconf",
+  "version": "0.0.1",
+  "author": {
+    "name": "Mihir Gokani",
+    "email": "mihirgokani007@yahoo.co.in"
+  },
+
+  "main": "./lib/nconf-validator.js",
+  "homepage": "http://github.com/mihirgokani007/nconf-validator",
+  "keywords": [
+    "validation", 
+    "validator", 
+    "validate", 
+    "nconf", 
+    "configuration", 
+    "config", 
+    "settings"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mihirgokani007/nconf-validator.git" 
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "http://github.com/mihirgokani007/nconf-validator/issues"
+  },
+
+  "dependencies": {
+    "validator": "^0.5.1"
+  },
+  "devDependencies": {
+    "nconf": "^0.6.9"
+  },
+  "engines": { "node": ">= 0.10" }
+}
