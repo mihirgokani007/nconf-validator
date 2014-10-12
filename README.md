@@ -32,7 +32,7 @@ var nval = require('nconf-validator')(nconf);
 ```
 
 ### Add rules
-To add validation rules, [`NConfValidator#addRule()`](#nconfvalidator-addrule) method can be used as follows:
+To add validation rules, [`NConfValidator#addRule()`](#nconfvalidatoraddrule) method can be used as follows:
 ```js
 nval.addRule("app_ip", "ip");
 nval.addRule("app_port", "port");
@@ -46,7 +46,7 @@ Finally run validation on `nval`
 ```js
 nval.validate();
 ```
-Note that [`NConfValidator#validate()`](#nconfvalidator-validate) method is never called automatically. It must be called manually when one or more config values change and needs to be validated.
+Note that [`NConfValidator#validate()`](#nconfvalidatorvalidate) method is never called automatically. It must be called manually when one or more config values change and needs to be validated.
 
 
 ## API
@@ -58,7 +58,7 @@ It is the main validator class for instantiating new instance of the validator. 
 NConfValidator(<config?>);
 ```
 
-While instantiating you provide reference to an instance of `nconf.Provider`, which will be used when no provider is specified to the [`NConfValidator#validate()`](#nconfvalidator-validate) method (will be explained later). Following snippet shows how to create a new instance of [`NConfValidator`](#nconfvalidator) in common scenarios:
+While instantiating you provide reference to an instance of `nconf.Provider`, which will be used when no provider is specified to the [`NConfValidator#validate()`](#nconfvalidatorvalidate) method (will be explained later). Following snippet shows how to create a new instance of [`NConfValidator`](#nconfvalidator) in common scenarios:
 ```js
 var nconf = require('nconf');
 var validator = require('nconf-validator');
@@ -97,7 +97,7 @@ addRule(<prop>, <rule>);
   It is a config property to be validated. This is specified in the same format as expected by `nconf.get()`. See the documentation of `nconf.get()` for more details.
 
 * `rule`
-  Specifies a validation rule for the given property. You can add multiple rules for a single property by calling [`NConfValidator#addRule()`](#nconfvalidator-addrule) multiple times with same `prop` value, in which case all the rules are validated. A rule can be one of the following:
+  Specifies a validation rule for the given property. You can add multiple rules for a single property by calling [`NConfValidator#addRule()`](#nconfvalidatoraddrule) multiple times with same `prop` value, in which case all the rules are validated. A rule can be one of the following:
 
   1. A predefined format string
     There are several predefined formats for validation that you can use, most of which are self-explanatory:
@@ -155,7 +155,7 @@ Perform validation with given rules registered with the validator. The rules are
 validate(<conf?>, <silent?>);
 ```
 * `conf`
-  The `conf` argument must be an instance of `nconf.Provider`. It is optional if you've specified the value of the default `nconf` while creating instance of [`NConfValidator`](#nconfvalidator). However if both are specified, the `conf` provided to the [`NConfValidator#validate()`](#nconfvalidator-validate) method will take precedence. Note that this precedence does not form a configuration hierarchy. So if some key `K` is present in the config you've provided while creating instance of [`NConfValidator`](#nconfvalidator), but not in the config provided to the [`NConfValidator#validate()`](#nconfvalidator-validate) method, it'll not be present while validating.
+  The `conf` argument must be an instance of `nconf.Provider`. It is optional if you've specified the value of the default `nconf` while creating instance of [`NConfValidator`](#nconfvalidator). However if both are specified, the `conf` provided to the [`NConfValidator#validate()`](#nconfvalidatorvalidate) method will take precedence. Note that this precedence does not form a configuration hierarchy. So if some key `K` is present in the config you've provided while creating instance of [`NConfValidator`](#nconfvalidator), but not in the config provided to the [`NConfValidator#validate()`](#nconfvalidatorvalidate) method, it'll not be present while validating.
 
 * `silent`
   An optional `silent` argument controls whether exception is thrown (if truthy) or errors are returned to the caller (if falsy). In the later case, a list of all validation errors are returned, or an empty list if there are no errors. Each item in this list is a [`ValidatorError`](#validatorerror) object. However if `silent` is not given or evaluates to `false`, only the first validation error (again an instance of [`ValidatorError`](#validatorerror)) is thrown.
@@ -163,7 +163,7 @@ validate(<conf?>, <silent?>);
 
 ### `ValidatorError`
 
-This class is used to instantiate objects which are thrown or returned from the [`NConfValidator#validate()`](#nconfvalidator-validate) method. It inherits from the builtin `Error` class and has following properties:
+This class is used to instantiate objects which are thrown or returned from the [`NConfValidator#validate()`](#nconfvalidatorvalidate) method. It inherits from the builtin `Error` class and has following properties:
 * `value`
   The value which was validated but turned out to be invalid.
 * `claim`
