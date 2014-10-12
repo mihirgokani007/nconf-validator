@@ -1,7 +1,7 @@
 {
   "name": "nconf-validator",
   "description": "Add validation support for nconf",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Mihir Gokani",
     "email": "mihirgokani007@yahoo.co.in"
